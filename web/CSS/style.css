@@ -8,3 +8,80 @@ and open the template in the editor.
     Author     : Denis Magno
 */
 
+/*Reset*/
+body {
+    padding: 0px;
+    margin: 0px;
+    font-family: verdana;
+    background-color: #FAFAFA;
+}
+
+/*Geral*/
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wraper{
+    min-height: calc(100vh - 350px);
+}
+
+.secao{
+    float: left;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/*Header*/
+header{
+    background: #FAFAFA;
+    float: left;
+    height: auto;
+    width: 100%;
+    color: #FFF;
+    padding-top: 20px;
+}
+
+.logo-header{
+    text-align: center;
+}
+
+.logo-header img{
+    max-width: 200px;
+}
+
+
+
+/*Footer*/
+footer{
+    background: #C5E1A5;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+.geral-footer{
+    float: left;
+    height: 60px;
+    width: 100%;
+}
+
+.barra-footer{
+    background: #9CCC65;
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+
+.barra-footer .esquerda{
+    color: #FFF;
+    margin-top: 11px;
+    float: left;
+}
+
+.barra-footer .direita{
+    color: #FFF;
+    margin-top: 11px;
+    float: right;
+}
