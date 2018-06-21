@@ -12,8 +12,11 @@ and open the template in the editor.
 body {
     padding: 0px;
     margin: 0px;
-    font-family: verdana;
     background-color: #FAFAFA;
+}
+
+body * {
+    font-family: verdana !important;
 }
 
 /*Geral*/
@@ -41,6 +44,8 @@ header{
     width: 100%;
     color: #FFF;
     padding-top: 20px;
+    padding-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .logo-header{
@@ -51,10 +56,35 @@ header{
     max-width: 200px;
 }
 
+/*Index*/
+.titulo{
+    text-align: center;
+    margin-top: 0px;
+    font-size: 26px;
+    color: #333;
+}
 
+.caixa-login{
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.campo{
+    margin-bottom: 20px;
+}
 
 /*Footer*/
 footer{
+    position: absolute;
+    bottom: 0;
     background: #C5E1A5;
     float: left;
     height: auto;
