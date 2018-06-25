@@ -8,3 +8,110 @@ and open the template in the editor.
     Author     : Denis Magno
 */
 
+/*Reset*/
+body {
+    padding: 0px;
+    margin: 0px;
+    background-color: #FAFAFA;
+}
+
+body * {
+    font-family: verdana !important;
+}
+
+/*Geral*/
+.container{
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.wraper{
+    min-height: calc(100vh - 350px);
+}
+
+.secao{
+    float: left;
+    width: 100%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+/*Header*/
+header{
+    background: #FAFAFA;
+    float: left;
+    height: auto;
+    width: 100%;
+    color: #FFF;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.logo-header{
+    text-align: center;
+}
+
+.logo-header img{
+    max-width: 200px;
+}
+
+/*Index*/
+.titulo{
+    text-align: center;
+    margin-top: 0px;
+    font-size: 26px;
+    color: #333;
+}
+
+.caixa-login{
+    width: 300px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.campo{
+    margin-bottom: 20px;
+}
+
+/*Footer*/
+footer{
+    position: absolute;
+    bottom: 0;
+    background: #C5E1A5;
+    float: left;
+    height: auto;
+    width: 100%;
+}
+
+.geral-footer{
+    float: left;
+    height: 60px;
+    width: 100%;
+}
+
+.barra-footer{
+    background: #9CCC65;
+    float: left;
+    height: 40px;
+    width: 100%;
+}
+
+.barra-footer .esquerda{
+    color: #FFF;
+    margin-top: 11px;
+    float: left;
+}
+
+.barra-footer .direita{
+    color: #FFF;
+    margin-top: 11px;
+    float: right;
+}
