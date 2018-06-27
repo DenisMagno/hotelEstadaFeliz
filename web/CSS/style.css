@@ -27,6 +27,7 @@ body * {
 
 .wraper{
     min-height: calc(100vh - 350px);
+    position: absolute;
 }
 
 .secao{
@@ -64,6 +65,13 @@ header{
     color: #333;
 }
 
+.texto{
+    text-align: center;
+    margin-top: 0px;
+    font-size: 14px;
+    color: #333;
+}
+
 .caixa-login{
     width: 300px;
     height: auto;
@@ -77,14 +85,66 @@ header{
     margin: 0 auto;
 }
 
+/*Restrito*/
+.menu-admin{
+    margin-top: 20px;
+}
+
+.menu-admin-item{
+    margin-right: 20px;
+    margin-top: 4px;
+}
+
+.menu-admin-item:hover{
+    background:transparent !important;
+    background-color:transparent !important;
+}
+
+.menu-admin-item span{
+    color: #333;
+}
+
+.caixa-form-admin{
+    width: 600px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #E0E0E0;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.visualizacao-form-admin{
+    width: 1000px;
+    height: auto;
+    box-sizing: border-box;
+    padding: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 8px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+
 .campo{
+    margin-bottom: 20px;
+}
+
+.campo-admin{
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 20px;
 }
 
 /*Footer*/
 footer{
-    position: absolute;
+    position: relative;
     bottom: 0;
+    left: 0;
     background: #C5E1A5;
     float: left;
     height: auto;
