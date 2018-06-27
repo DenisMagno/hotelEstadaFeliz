@@ -26,9 +26,9 @@
                     <h1 class="titulo">Administração</h1>
                     <section class="caixa-login">
                         <h:form>        
-                            <p:inputText class="campo" placeholder='Login'/>
-                            <p:password class="campo" placeholder='Senha'/>
-                            <p:commandButton value="Entrar" id="nonAjax" actionListener="#{buttonView.buttonAction}" ajax="false" />
+                            <p:inputText class="campo" placeholder="E-mail" id="email" value="#{pessoaMB.email}" />
+                            <p:password class="campo" placeholder="Senha" id="senha" value="#{pessoaMB.senha}" />
+                            <p:commandButton value="Entrar" action="#{pessoaMB.entrar()}" />
                         </h:form>
                     </section>
                 </div>

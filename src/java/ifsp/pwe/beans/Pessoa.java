@@ -1,16 +1,13 @@
-package ifsp.pwe.managedbeans;
+package ifsp.pwe.beans;
 
-import javax.faces.bean.ManagedBean;
-
-@ManagedBean
-public abstract class PessoaMB {
-    private Integer id;
-    private Integer cpf;
-    private String nome;
-    private String telefone;
-    private String email;
-    private String endereco;
-
+public abstract class Pessoa {
+    protected Integer id;
+    protected Integer cpf;
+    protected String nome;
+    protected String telefone;
+    protected String email;
+    protected String endereco;
+    
     public Integer getId() {
         return id;
     }
