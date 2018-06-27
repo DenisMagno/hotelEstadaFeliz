@@ -1,7 +1,7 @@
 package ifsp.pwe.mbs;
 
 import ifsp.pwe.beans.Proprietario;
-import ifsp.pwe.helpers.SessionContext;
+import ifsp.pwe.utils.SessionContext;
 import java.io.IOException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
@@ -26,12 +26,11 @@ public class PessoaMB {
             sessao.setAttribute("usuario_logado", proprietario);
             
             /*
-                TODO - Descomentar quando pagina do admin estiver pronta
-                TODO - Verificar se pessoa e recepcionista ou proprietário e 
-                redirecionar para página correta
-
+            TODO - Descomentar quando pagina do admin estiver pronta
+            TODO - Verificar se pessoa e recepcionista ou proprietário e
+            redirecionar para página correta
             FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
-            */
+             */
         }
     }
 

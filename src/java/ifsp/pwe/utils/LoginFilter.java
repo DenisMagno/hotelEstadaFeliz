@@ -1,4 +1,4 @@
-package ifsp.pwe.Helpers;
+package ifsp.pwe.utils;
 
 import java.io.IOException;
 import javax.servlet.Filter;

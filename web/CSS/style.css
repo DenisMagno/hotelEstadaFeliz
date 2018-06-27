@@ -26,8 +26,7 @@ body * {
 }
 
 .wraper{
-    min-height: calc(100vh - 350px);
-    position: absolute;
+    min-height: calc(100vh - 100px);
 }
 
 .secao{
@@ -143,8 +142,6 @@ header{
 /*Footer*/
 footer{
     position: relative;
-    bottom: 0;
-    left: 0;
     background: #C5E1A5;
     float: left;
     height: auto;

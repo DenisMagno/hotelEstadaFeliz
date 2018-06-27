@@ -1,4 +1,4 @@
-package ifsp.pwe.helpers;
+package ifsp.pwe.utils;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext; 
