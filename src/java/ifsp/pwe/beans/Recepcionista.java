@@ -4,16 +4,6 @@ public class Recepcionista extends Pessoa implements IFuncionario{
    private Float salario;
     private String senha;
     private String email;
-
-    @Override
-    public Proprietario login(String email, String senha) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void logout() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     public void obterConsumo() {
