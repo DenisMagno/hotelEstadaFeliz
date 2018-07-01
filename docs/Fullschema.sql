@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jul-2018 às 00:34
+-- Generation Time: 02-Jul-2018 às 00:43
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -30,7 +30,6 @@ USE `hotel_estada_feliz`;
 -- Estrutura da tabela `cliente`
 --
 
-DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE IF NOT EXISTS `cliente` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `dataCriacao` varchar(60) NOT NULL,
@@ -43,7 +42,6 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 -- Estrutura da tabela `consumo`
 --
 
-DROP TABLE IF EXISTS `consumo`;
 CREATE TABLE IF NOT EXISTS `consumo` (
   `id_hospedagem` int(11) NOT NULL,
   `id_produto` int(11) NOT NULL,
@@ -58,7 +56,6 @@ CREATE TABLE IF NOT EXISTS `consumo` (
 -- Estrutura da tabela `hospedagem`
 --
 
-DROP TABLE IF EXISTS `hospedagem`;
 CREATE TABLE IF NOT EXISTS `hospedagem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `checkIn` datetime NOT NULL,
@@ -76,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `hospedagem` (
 -- Estrutura da tabela `hotel`
 --
 
-DROP TABLE IF EXISTS `hotel`;
 CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) DEFAULT NULL,
   `nome` varchar(120) NOT NULL,
@@ -90,7 +86,6 @@ CREATE TABLE IF NOT EXISTS `hotel` (
 -- Estrutura da tabela `pessoa`
 --
 
-DROP TABLE IF EXISTS `pessoa`;
 CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cpf` varchar(20) NOT NULL,
@@ -115,7 +110,6 @@ INSERT INTO `pessoa` (`id`, `cpf`, `telefone`, `endereco`, `nome`, `email`) VALU
 -- Estrutura da tabela `produto`
 --
 
-DROP TABLE IF EXISTS `produto`;
 CREATE TABLE IF NOT EXISTS `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(120) NOT NULL,
@@ -131,7 +125,6 @@ CREATE TABLE IF NOT EXISTS `produto` (
 -- Estrutura da tabela `proprietario`
 --
 
-DROP TABLE IF EXISTS `proprietario`;
 CREATE TABLE IF NOT EXISTS `proprietario` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `senha` varchar(20) NOT NULL,
@@ -152,7 +145,6 @@ INSERT INTO `proprietario` (`id_pessoa`, `senha`, `salario`) VALUES
 -- Estrutura da tabela `quarto`
 --
 
-DROP TABLE IF EXISTS `quarto`;
 CREATE TABLE IF NOT EXISTS `quarto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` enum('1','2') NOT NULL,
@@ -168,7 +160,6 @@ CREATE TABLE IF NOT EXISTS `quarto` (
 -- Estrutura da tabela `recepcionista`
 --
 
-DROP TABLE IF EXISTS `recepcionista`;
 CREATE TABLE IF NOT EXISTS `recepcionista` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
   `senha` varchar(20) NOT NULL,
