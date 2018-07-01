@@ -1,6 +1,6 @@
 package ifsp.pwe.beans;
 
-public class Cliente {
+public class Cliente extends Pessoa{
     private String dataCriacao;
 
     public String getDataCriacao() {
