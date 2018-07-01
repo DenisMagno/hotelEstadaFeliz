@@ -1,5 +1,6 @@
 package ifsp.pwe.mbs;
 
+import ifsp.pwe.beans.Pessoa;
 import ifsp.pwe.beans.Proprietario;
 import ifsp.pwe.utils.SessionContext;
 import java.io.IOException;
@@ -18,17 +19,23 @@ public class PessoaMB {
 
     public void entrar() throws IOException{
         Proprietario proprietario = this.proprietario.login(this.email, this.senha);
-        
+
         if(proprietario == null){
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
-            System.out.println("Não entrou!");
         }else{
-            System.out.println("Entrou!");
             SessionContext sessao = SessionContext.getInstance();
-            sessao.setAttribute("usuario_logado", proprietario);
+            sessao.setAttribute("usuario_logado", (Pessoa)proprietario);
 
             FacesContext.getCurrentInstance().getExternalContext().redirect("ADMIN/proprietario.xhtml");
         }
+    }
+
+    public void sair() throws IOException{
+        System.out.println("Entrou!");
+        SessionContext sessao = SessionContext.getInstance();
+        sessao.encerrarSessao();
+
+        FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
     }
 
     public String getSenha() {
