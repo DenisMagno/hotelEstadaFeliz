@@ -50,7 +50,7 @@ public class HotelDao extends ConnectionFactory{
             stmt.setString(2, sql);
             stmt.setString(3, sql);
             
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;
