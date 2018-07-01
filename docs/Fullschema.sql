@@ -21,7 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `hotel_estada_feliz`
 --
-CREATE DATABASE IF NOT EXISTS `hotel_estada_feliz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE IF EXISTS `hotel_estada_feliz`;
+CREATE DATABASE `hotel_estada_feliz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `hotel_estada_feliz`;
 
 -- --------------------------------------------------------
