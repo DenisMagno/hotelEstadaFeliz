@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-Jun-2018 às 02:56
+-- Generation Time: 02-Jul-2018 às 00:34
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -99,7 +99,15 @@ CREATE TABLE IF NOT EXISTS `pessoa` (
   `nome` varchar(180) NOT NULL,
   `email` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `pessoa`
+--
+
+INSERT INTO `pessoa` (`id`, `cpf`, `telefone`, `endereco`, `nome`, `email`) VALUES
+(1, '443.815.068.04', '989878778', 'avenida', 'Mariana', 'mariana@mariana'),
+(2, '123123', '2345678910', 'rua', 'Denis', 'denis@denis');
 
 -- --------------------------------------------------------
 
@@ -126,10 +134,17 @@ CREATE TABLE IF NOT EXISTS `produto` (
 DROP TABLE IF EXISTS `proprietario`;
 CREATE TABLE IF NOT EXISTS `proprietario` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
-  `senha` int(11) NOT NULL,
-  `salario` varchar(100) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `salario` decimal(7,2) NOT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `proprietario`
+--
+
+INSERT INTO `proprietario` (`id_pessoa`, `senha`, `salario`) VALUES
+(1, '123', '1000.00');
 
 -- --------------------------------------------------------
 
@@ -145,7 +160,7 @@ CREATE TABLE IF NOT EXISTS `quarto` (
   `preco` int(11) NOT NULL,
   `descricao` varchar(180) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -156,10 +171,17 @@ CREATE TABLE IF NOT EXISTS `quarto` (
 DROP TABLE IF EXISTS `recepcionista`;
 CREATE TABLE IF NOT EXISTS `recepcionista` (
   `id_pessoa` int(11) NOT NULL AUTO_INCREMENT,
-  `senha` int(11) NOT NULL,
-  `salario` varchar(100) NOT NULL,
+  `senha` varchar(20) NOT NULL,
+  `salario` decimal(7,2) NOT NULL,
   PRIMARY KEY (`id_pessoa`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `recepcionista`
+--
+
+INSERT INTO `recepcionista` (`id_pessoa`, `senha`, `salario`) VALUES
+(2, '123', '1000.00');
 
 --
 -- Constraints for dumped tables

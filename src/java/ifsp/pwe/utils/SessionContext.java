@@ -2,7 +2,7 @@ package ifsp.pwe.utils;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext; 
-   
+
 public class SessionContext {
       
     private static SessionContext instance;
@@ -24,7 +24,7 @@ public class SessionContext {
             return FacesContext.getCurrentInstance().getExternalContext();
         }
     }
- 
+
     public void encerrarSessao(){
         currentExternalContext().invalidateSession();
     }

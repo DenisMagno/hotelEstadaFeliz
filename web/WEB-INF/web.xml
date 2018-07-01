@@ -24,17 +24,19 @@
         <param-value>bootstrap</param-value>
     </context-param>
 
-    <!-- TODO - Descomentar quando admin estiver pronto
     <filter>
        <filter-name>LoginFilter</filter-name>
-       <filter-class>ifsp.pwe.Helpers.LoginFilter</filter-class>
+       <filter-class>ifsp.pwe.utils.LoginFilter</filter-class>
     </filter>
 
     <filter-mapping>
         <filter-name>LoginFilter</filter-name>
-        <url-pattern>/admin.xhtml</url-pattern>
-    </filter-mapping>-->
-    
+        <url-pattern>/ADMIN/proprietario.xhtml</url-pattern>
+        <url-pattern>/ADMIN/recepcionista.xhtml</url-pattern>
+        <url-pattern>/ADMIN/visualizacao-generico.xhtml</url-pattern>
+        <url-pattern>/ADMIN/formulario-generico.xhtml</url-pattern>
+    </filter-mapping>
+
     <session-config>
         <session-timeout>
             30

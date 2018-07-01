@@ -1,5 +1,6 @@
 package ifsp.pwe.dao;
 
+import ifsp.pwe.beans.Pessoa;
 import ifsp.pwe.beans.Proprietario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,9 +9,15 @@ import java.sql.SQLException;
 public class ProprietarioDao extends ConnectionFactory{
     public Proprietario obter(String email, String senha){
         try{
-            String sql = "SELECT * FROM proprietario WHERE email = ? AND senha = ?";
+            Pessoa pessoa = new PessoaDao().obter(email);
+            
+            if(pessoa == null){
+                return null;
+            }
+
+            String sql = "SELECT * FROM proprietario WHERE id_pessoa = ? AND senha = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, email);
+            stmt.setLong(1, pessoa.getId());
             stmt.setString(2, senha);
 
             ResultSet rs = stmt.executeQuery();
@@ -20,21 +27,22 @@ public class ProprietarioDao extends ConnectionFactory{
             }
 
             Proprietario proprietario = new Proprietario();
-            proprietario.setId(rs.getLong("id"));
-            proprietario.setCpf(rs.getInt("cpf"));
+            proprietario.setId(rs.getLong("id_pessoa"));
+            proprietario.setCpf(pessoa.getCpf());
+            proprietario.setTelefone(pessoa.getTelefone());
+            proprietario.setEndereco(pessoa.getEndereco());
+            proprietario.setNome(pessoa.getNome());
+            proprietario.setEmail(pessoa.getEmail());
             proprietario.setSenha(rs.getString("senha"));
-            proprietario.setTelefone(rs.getString("telefone"));
-            proprietario.setEndereco(rs.getString("endereco"));
-            proprietario.setNome(rs.getString("nome"));
-            proprietario.setEmail(rs.getString("email"));
             proprietario.setSalario(rs.getFloat("salario"));
+            
             rs.close();
             stmt.close();
             this.connection.close();
-            
+
             return proprietario;
         }catch(SQLException ex){
             throw new RuntimeException(ex);
-        }        
+        }
     }
 }

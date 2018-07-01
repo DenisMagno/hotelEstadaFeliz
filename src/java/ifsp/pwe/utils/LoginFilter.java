@@ -1,5 +1,6 @@
 package ifsp.pwe.utils;
 
+import ifsp.pwe.beans.Pessoa;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -17,17 +18,12 @@ public class LoginFilter implements Filter{
     public void init(FilterConfig filterConfig) throws ServletException { }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-        /*
-            TODO - Descomentar quando a bean usuario estiver pronta.
-        
-        Usuario usuario = (Usuario) ((HttpServletRequest) request).getSession().getAttribute("usuario_logado");
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {     
+        Pessoa pessoa = (Pessoa) ((HttpServletRequest) request).getSession().getAttribute("usuario_logado");
 
-
-        if(usuario == null){
-            ((HttpServletResponse) response).sendRedirect("index.xhtml");
+        if(pessoa == null){
+            ((HttpServletResponse) response).sendRedirect("../index.xhtml");
         }
-        */
 
         chain.doFilter(request, response);
     }
