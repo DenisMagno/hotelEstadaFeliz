@@ -20,7 +20,7 @@ public class ProprietarioDao extends ConnectionFactory{
             }
 
             Proprietario proprietario = new Proprietario();
-            proprietario.setId(rs.getInt("id"));
+            proprietario.setId(rs.getLong("id"));
             proprietario.setCpf(rs.getInt("cpf"));
             proprietario.setSenha(rs.getString("senha"));
             proprietario.setTelefone(rs.getString("telefone"));

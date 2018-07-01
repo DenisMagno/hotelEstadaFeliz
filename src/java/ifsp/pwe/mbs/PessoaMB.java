@@ -21,16 +21,13 @@ public class PessoaMB {
         
         if(proprietario == null){
             FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            System.out.println("Não entrou!");
         }else{
+            System.out.println("Entrou!");
             SessionContext sessao = SessionContext.getInstance();
             sessao.setAttribute("usuario_logado", proprietario);
-            
-            /*
-            TODO - Descomentar quando pagina do admin estiver pronta
-            TODO - Verificar se pessoa e recepcionista ou proprietário e
-            redirecionar para página correta
-            FacesContext.getCurrentInstance().getExternalContext().redirect("admin.xhtml");
-             */
+
+            FacesContext.getCurrentInstance().getExternalContext().redirect("ADMIN/proprietario.xhtml");
         }
     }
 

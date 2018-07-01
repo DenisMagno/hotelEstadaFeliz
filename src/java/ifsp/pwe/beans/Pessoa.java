@@ -1,18 +1,18 @@
 package ifsp.pwe.beans;
 
 public abstract class Pessoa {
-    protected Integer id;
+    protected Long id;
     protected Integer cpf;
     protected String nome;
     protected String telefone;
     protected String email;
     protected String endereco;
     
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
