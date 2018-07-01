@@ -12,6 +12,4 @@ public interface IFuncionario {
     public void criarHospedagem();
     public void atualizarHospedagem();
     public void encerrarHospedagem();
-    public Proprietario login(String email, String senha);
-    public void logout();
 }

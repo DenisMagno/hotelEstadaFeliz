@@ -1,12 +1,29 @@
 package ifsp.pwe.beans;
 
-public abstract class Pessoa {
+import ifsp.pwe.dao.ProprietarioDao;
+import ifsp.pwe.dao.RecepcionistaDao;
+
+public class Pessoa {
     protected Long id;
     protected Integer cpf;
     protected String nome;
     protected String telefone;
     protected String email;
     protected String endereco;
+    
+    public int login(String email, String senha){
+        Proprietario proprietario = new ProprietarioDao().obter(email, senha);
+        if(proprietario != null){
+            return 1;
+        }
+        
+        Recepcionista recepcionista = new RecepcionistaDao().obter(email, senha);
+        if(recepcionista != null){
+            return 2;
+        }
+        
+        return 0;
+    }
     
     public Long getId() {
         return id;
