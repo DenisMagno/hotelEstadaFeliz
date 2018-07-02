@@ -9,7 +9,7 @@ public abstract class ConnectionFactory {
     private String mydatabase = "hotel_estada_feliz";
     private String url = "jdbc:mysql://" + this.serverName + "/" + this.mydatabase;
     private String username = "root";
-    private String password = "senha";
+    private String password = "";
 
     protected Connection connection;
 
