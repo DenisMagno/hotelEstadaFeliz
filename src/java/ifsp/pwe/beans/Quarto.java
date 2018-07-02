@@ -6,6 +6,7 @@ public class Quarto {
     private String numero;
     private Float preco;
     private String descricao;
+    private Hotel hotel;
 
     public Long getId() {
         return id;
@@ -46,4 +47,14 @@ public class Quarto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+    
+    
 }

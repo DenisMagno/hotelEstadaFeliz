@@ -70,13 +70,14 @@ public class QuartoDao extends ConnectionFactory{
     public Quarto criar(Quarto quarto){
         
         try {
-            String sql = "INSERT INTO quarto (tipo, numero, preco, descricao) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO quarto (tipo, numero, preco, descricao, id_hotel) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, quarto.getTipo());
             stmt.setString(2, quarto.getNumero());
             stmt.setFloat(3, quarto.getPreco());
             stmt.setString(4, quarto.getDescricao());
-
+            stmt.setLong(5, quarto.getHotel().getId());
+            
             boolean rs = stmt.execute();
             
             if(!rs){

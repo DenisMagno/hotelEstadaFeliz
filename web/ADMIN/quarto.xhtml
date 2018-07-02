@@ -34,9 +34,9 @@
                             <p:inputText class="campo-admin" placeholder='Numero' id ="numero" value="#{quartoMB.numero}"/>
                             <p:inputText class="campo-admin" placeholder='Preço' id ="preco" value="#{quartoMB.preco}"/>
                             <p:inputText class="campo-admin" placeholder='Descrição' id ="descricao" value="#{quartoMB.descricao}"/>
-                            <p:selectOneMenu class="campo-admin" value="#{quartoMB.hotel}" >
+                            <p:selectOneMenu class="campo-admin" value="#{quartoMB.idHotel}" >
                                 <f:selectItem itemLabel="Selecione um Hotel" />
-                                <f:selectItems value="#{hotelMB.buscar()}" var="hot" itemLabel="#{hot.nome}" itemValue="#{hot}" />
+                                <f:selectItems value="#{hotelMB.buscar()}" var="hot" itemLabel="#{hot.nome}" itemValue="#{hot.id}" />
                                 
                             </p:selectOneMenu>
                             <p:commandButton value="Cadastrar" action="#{quartoMB.criar()}" />

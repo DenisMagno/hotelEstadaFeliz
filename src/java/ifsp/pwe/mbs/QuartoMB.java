@@ -3,8 +3,10 @@ package ifsp.pwe.mbs;
 import ifsp.pwe.beans.Hotel;
 import ifsp.pwe.beans.Quarto;
 import ifsp.pwe.dao.QuartoDao;
+import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class QuartoMB {
@@ -13,20 +15,32 @@ public class QuartoMB {
     private String numero;
     private Float preco;
     private String descricao;
-    private Hotel hotel;
+    private Long idHotel;
     private Quarto quarto;
+    private Hotel hotel;
     
     public QuartoMB(){
         this.quarto = new Quarto();
+        this.hotel = new Hotel();
     }
     
-    public void criar(){
+    public void criar() throws IOException{
         this.quarto.setNumero(this.numero);
         this.quarto.setDescricao(this.descricao);
         this.quarto.setPreco(this.preco);
         this.quarto.setTipo(this.tipo);
+        this.hotel.setId(this.idHotel);
+        this.quarto.setHotel(this.hotel);
         
-        new QuartoDao().criar(this.quarto);
+        Quarto quarto = new QuartoDao().criar(this.quarto);
+        
+        if(quarto != null){
+            System.out.println("Criou quarto");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("quarto.xhtml");
+        }else{
+            System.out.println("Não criou quarto");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("quarto.xhtml");
+        }
     }
     
     public List<Quarto> buscar(){
@@ -82,6 +96,14 @@ public class QuartoMB {
         this.quarto = quarto;
     }
 
+    public Long getIdHotel() {
+        return idHotel;
+    }
+
+    public void setIdHotel(Long idHotel) {
+        this.idHotel = idHotel;
+    }
+
     public Hotel getHotel() {
         return hotel;
     }
@@ -89,6 +111,4 @@ public class QuartoMB {
     public void setHotel(Hotel hotel) {
         this.hotel = hotel;
     }
-    
-    
 }
