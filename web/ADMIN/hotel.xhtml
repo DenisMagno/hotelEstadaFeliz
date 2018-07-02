@@ -46,30 +46,31 @@
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
-                                <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Nome">
-                                        <h:outputText value="#{hotelMB.nome}" />
-                                    </p:column>
+                                <n:repeat var="hotel" value="#{hotelMB.buscar()}">
+                                    <p:dataTable id="availableCars" var="car" value="">
+                                        <p:column headerText="Nome">
+                                            <h:outputText value="#{hotel.nome}" />
+                                        </p:column>
 
-                                    <p:column headerText="Endereço">
-                                        <h:outputText value="#{hotelMB.endereco}" />
-                                    </p:column>
+                                        <p:column headerText="Endereço">
+                                            <h:outputText value="#{hotel.endereco}" />
+                                        </p:column>
 
-                                    <p:column headerText="CNPJ">
-                                        <h:outputText value="#{hotelMB.cnpj}" />
-                                    </p:column>
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
-                                        <p:draggable for="Editar" revert="true" helper="clone"/>
-                                    </p:column>
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
-                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
-                                    </p:column>
-                                </p:dataTable>
-                                
+                                        <p:column headerText="CNPJ">
+                                            <h:outputText value="#{hotel.cnpj}" />
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                            <p:draggable for="Editar" revert="true" helper="clone"/>
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                            <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </n:repeat>
                             </p:fieldset>
                         </h:form>
                     </section>

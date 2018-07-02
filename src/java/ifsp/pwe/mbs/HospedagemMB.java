@@ -23,6 +23,10 @@ public class HospedagemMB {
     private Cliente cliente;
     private Quarto quarto;
     
+    public void criar(){
+        
+    }
+    
     public List<Hospedagem> buscar(){
         List<Hospedagem> clientes = new HospedagemDao().obter();
         return clientes;
