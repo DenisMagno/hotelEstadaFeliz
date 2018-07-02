@@ -22,12 +22,13 @@
                     <h:form class="menu-admin">  
                         <p:growl id="messages"/>
                         <p:menubar>
-                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
                             <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Produtos" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Funcionários" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Hotéis" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Quartos" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
+
 
                             <f:facet name="options">
                                 <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
@@ -39,7 +40,7 @@
 
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Formulário Genérico</h1>
+                    <h1 class="titulo">Cadastrar Produto</h1>
                     <section class="caixa-form-admin">
                         <h:form>        
                             <p:inputText class="campo-admin" placeholder='Nome' id ="nome" value="#{produtoMB.nome}" />
@@ -51,7 +52,48 @@
                     </section>
                 </div>
             </div>
+            
+            <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Lista Produtos</h1>
+                    <section class="visualizacao-form-admin">
+                        <h:form id="carForm">
+                            <p:fieldset id="availableCarsField" legend="Conteúdo">
+                                <p:dataTable id="availableCars" var="car" value="">
+                                    <p:column headerText="Nome">
+                                        <h:outputText value="#{produtoMB.nome}" />
+                                    </p:column>
 
+                                    <p:column headerText="Preço">
+                                        <h:outputText value="#{produtoMB.preco}" />
+                                    </p:column>
+
+                                    <p:column headerText="Descrição">
+                                        <h:outputText value="#{produtoMB.descricao}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Status">
+                                        <h:outputText value="#{produtoMB.status}" />
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                        <p:draggable for="Editar" revert="true" helper="clone"/>
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                    </p:column>
+                                </p:dataTable>
+                                
+                            </p:fieldset>
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+
+            
             <footer>
                 <div class="container">
                     <div class="geral-footer">

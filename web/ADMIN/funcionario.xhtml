@@ -24,10 +24,11 @@
                         <p:menubar>
                             <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
                             <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Produtos" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
                             <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
                             <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
                             <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
+
 
                             <f:facet name="options">
                                 <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
@@ -38,13 +39,13 @@
             </header>
              <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Cadastrar Funcionários</h1>
+                    <h1 class="titulo">Cadastrar Funcionário</h1>
                     <section class="caixa-form-admin">
                         <h:form>        
-                            <p:inputText class="campo-admin" placeholder='CPF'/>
-                            <p:inputText class="campo-admin" placeholder='Nome'/>
+                            <p:inputText class="campo-admin" placeholder='CPF' />
+                            <p:inputText class="campo-admin" placeholder='Nome' />
                             <p:inputText class="campo-admin" placeholder='Telefone'/>
-                            <p:inputText class="campo-admin" placeholder='E-mail'/>
+                            <p:inputText class="campo-admin" placeholder='E-mail' />
                             <p:inputText class="campo-admin" placeholder='Endereço'/>
                             <p:commandButton value="Cadastrar" id="nonAjax" actionListener="#{buttonView.buttonAction}" ajax="false" />
                         </h:form>
@@ -54,25 +55,29 @@
             
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Lista Funcionários</h1>
+                    <h1 class="titulo">Listar Funcionários</h1>
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
                                 <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Id">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="CPF">
+                                        <h:outputText value="#{funcionarioMB.cpf}" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 1">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="Nome">
+                                        <h:outputText value="#{funcionarioMB.nome}" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 2">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="Telefone">
+                                        <h:outputText value="#{funcionarioMB.telefone}" />
                                     </p:column>
-
-                                    <p:column headerText="Campo 3">
-                                        <h:outputText value="Teste" />
+                                    
+                                    <p:column headerText="E-mail">
+                                        <h:outputText value="#{funcionarioMB.email}" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Endereço">
+                                        <h:outputText value="#{funcionarioMB.endereco}" />
                                     </p:column>
                                     
                                     <p:column style="width:20px">
