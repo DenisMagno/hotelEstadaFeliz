@@ -2,6 +2,7 @@ package ifsp.pwe.mbs;
 
 import ifsp.pwe.beans.Quarto;
 import ifsp.pwe.dao.QuartoDao;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
@@ -24,6 +25,11 @@ public class QuartoMB {
         this.quarto.setTipo(this.tipo);
         
         new QuartoDao().criar(this.quarto);
+    }
+    
+    public List<Quarto> obter(){
+        List<Quarto> quartos = new QuartoDao().obter();
+        return quartos;
     }
 
     public Long getId() {
