@@ -16,27 +16,39 @@
         <div class="wraper">
 
             <n:include src="navProprietario.xhtml"></n:include>
+            
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Conteúdo Genérico</h1>
+                    <h1 class="titulo">Cadastrar Hotel</h1>
+                    <section class="caixa-form-admin">
+                        <h:form>
+                            <p:inputText class="campo-admin" placeholder="Nome" id="nome" value="#{hotelMB.nome}" />
+                            <p:inputText class="campo-admin" placeholder="Endereço" id="endereco" value="#{hotelMB.endereco}" />
+                            <p:inputText class="campo-admin" placeholder="CNPJ" id="cnpj" value="#{hotelMB.cnpj}" />
+                           
+                            <p:commandButton value="Cadastrar" action="#{hotelMB.criar()}" />
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Listar Hotéis</h1>
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
                                 <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Id">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="Nome">
+                                        <h:outputText value="#{hotelMB.nome}" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 1">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="Endereço">
+                                        <h:outputText value="#{hotelMB.endereco}" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 2">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
-
-                                    <p:column headerText="Campo 3">
-                                        <h:outputText value="Teste" />
+                                    <p:column headerText="CNPJ">
+                                        <h:outputText value="#{hotelMB.cnpj}" />
                                     </p:column>
                                     
                                     <p:column style="width:20px">
