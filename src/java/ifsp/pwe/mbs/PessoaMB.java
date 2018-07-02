@@ -56,13 +56,10 @@ public class PessoaMB {
         Object pessoa = sessao.getAttribute("usuario_logado");
 
         if(pessoa instanceof Proprietario){
-            System.out.println("É um proprietário");
             return 1;
         }else if(pessoa instanceof Recepcionista){
-            System.out.println("É um recepcionista");
             return 2;
         }else{
-            System.out.println("Não é proprietário nem recepcionista");
             return 0;
         }
     }

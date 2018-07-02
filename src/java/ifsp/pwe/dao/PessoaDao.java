@@ -97,6 +97,4 @@ public class PessoaDao extends ConnectionFactory {
             throw new RuntimeException(ex);
         }   
     }
-    
-    
 }
