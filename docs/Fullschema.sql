@@ -1,81 +1,71 @@
-CREATE DATABASE  IF NOT EXISTS `hotel_estada_feliz` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `hotel_estada_feliz`;
--- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 4.7.9
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost    Database: hotel_estada_feliz
--- ------------------------------------------------------
--- Server version	5.7.19-log
+-- Host: 127.0.0.1
+-- Generation Time: 02-Jul-2018 às 21:37
+-- Versão do servidor: 10.1.31-MariaDB
+-- PHP Version: 7.2.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `cliente`
+-- Database: `hotel_estada_feliz`
 --
 
-DROP TABLE IF EXISTS `cliente`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cliente` (
+DROP DATABASE IF EXISTS `hotel_estada_feliz`;
+CREATE DATABASE `hotel_estada_feliz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `hotel_estada_feliz`;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `cliente`
+--
+
+CREATE TABLE IF NOT EXISTS `cliente` (
   `id_pessoa` int(11) NOT NULL,
   `dataCriacao` varchar(60) NOT NULL,
-  PRIMARY KEY (`id_pessoa`),
-  CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cliente`
+-- Extraindo dados da tabela `cliente`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `cliente` (`id_pessoa`, `dataCriacao`) VALUES
+(5, '2018/07/02 13:06:55');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `consumo`
+-- Estrutura da tabela `consumo`
 --
 
-DROP TABLE IF EXISTS `consumo`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `consumo` (
+CREATE TABLE IF NOT EXISTS `consumo` (
   `id_hospedagem` int(11) NOT NULL,
   `id_produto` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
   PRIMARY KEY (`id_hospedagem`,`id_produto`),
-  KEY `id_produto` (`id_produto`),
-  CONSTRAINT `consumo_ibfk_1` FOREIGN KEY (`id_hospedagem`) REFERENCES `hospedagem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `consumo_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `id_produto` (`id_produto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `consumo`
+-- Estrutura da tabela `hospedagem`
 --
 
-LOCK TABLES `consumo` WRITE;
-/*!40000 ALTER TABLE `consumo` DISABLE KEYS */;
-/*!40000 ALTER TABLE `consumo` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `hospedagem`
---
-
-DROP TABLE IF EXISTS `hospedagem`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `hospedagem` (
+CREATE TABLE IF NOT EXISTS `hospedagem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `checkIn` datetime NOT NULL,
   `checkOut` datetime NOT NULL,
@@ -83,52 +73,41 @@ CREATE TABLE `hospedagem` (
   `dataHorarioFim` datetime NOT NULL,
   `preco` float NOT NULL,
   `status` enum('1','2','3') NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_cliente` int(11) NOT NULL,
+  `id_quarto` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_cliente` (`id_cliente`,`id_quarto`),
+  KEY `id_quarto` (`id_quarto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `hospedagem`
+-- Estrutura da tabela `hotel`
 --
 
-LOCK TABLES `hospedagem` WRITE;
-/*!40000 ALTER TABLE `hospedagem` DISABLE KEYS */;
-/*!40000 ALTER TABLE `hospedagem` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `hotel`
---
-
-DROP TABLE IF EXISTS `hotel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `hotel` (
+CREATE TABLE IF NOT EXISTS `hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(120) NOT NULL,
   `endereco` varchar(180) NOT NULL,
   `cnpj` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `hotel`
+-- Extraindo dados da tabela `hotel`
 --
 
-LOCK TABLES `hotel` WRITE;
-/*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-/*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `hotel` (`id`, `nome`, `endereco`, `cnpj`) VALUES
+(1, 'Maravilha', 'rua maravilhosa', '6666666');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `pessoa`
+-- Estrutura da tabela `pessoa`
 --
 
-DROP TABLE IF EXISTS `pessoa`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `pessoa` (
+CREATE TABLE IF NOT EXISTS `pessoa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `cpf` varchar(20) NOT NULL,
   `telefone` varchar(120) NOT NULL,
@@ -136,27 +115,24 @@ CREATE TABLE `pessoa` (
   `nome` varchar(180) NOT NULL,
   `email` varchar(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pessoa`
+-- Extraindo dados da tabela `pessoa`
 --
 
-LOCK TABLES `pessoa` WRITE;
-/*!40000 ALTER TABLE `pessoa` DISABLE KEYS */;
-INSERT INTO `pessoa` VALUES (1,'443.815.068-04','(11)1231-1232','Avenida','Mariana','mariana@email'),(2,'423.918.918-09','(11)2143-3872','Rua','Denis','denis@email');
-/*!40000 ALTER TABLE `pessoa` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `pessoa` (`id`, `cpf`, `telefone`, `endereco`, `nome`, `email`) VALUES
+(1, '443.815.068-04', '(11)1231-1232', 'Avenida', 'Mariana', 'mariana@email'),
+(2, '423.918.918-09', '(11)2143-3872', 'Rua', 'Denis', 'denis@email'),
+(5, '222222222', '11111111', 'rua', 'Denis', 'denis@denis');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `produto`
+-- Estrutura da tabela `produto`
 --
 
-DROP TABLE IF EXISTS `produto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `produto` (
+CREATE TABLE IF NOT EXISTS `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(120) NOT NULL,
   `preco` float NOT NULL,
@@ -164,51 +140,34 @@ CREATE TABLE `produto` (
   `status` enum('1','2','3') NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `produto`
+-- Estrutura da tabela `proprietario`
 --
 
-LOCK TABLES `produto` WRITE;
-/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `proprietario`
---
-
-DROP TABLE IF EXISTS `proprietario`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `proprietario` (
+CREATE TABLE IF NOT EXISTS `proprietario` (
   `id_pessoa` int(11) NOT NULL,
   `senha` varchar(20) NOT NULL,
   `salario` decimal(7,2) NOT NULL,
-  PRIMARY KEY (`id_pessoa`),
-  CONSTRAINT `proprietario_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `proprietario`
+-- Extraindo dados da tabela `proprietario`
 --
 
-LOCK TABLES `proprietario` WRITE;
-/*!40000 ALTER TABLE `proprietario` DISABLE KEYS */;
-INSERT INTO `proprietario` VALUES (1,'123',1000.00);
-/*!40000 ALTER TABLE `proprietario` ENABLE KEYS */;
-UNLOCK TABLES;
+INSERT INTO `proprietario` (`id_pessoa`, `senha`, `salario`) VALUES
+(1, '123', '1000.00');
+
+-- --------------------------------------------------------
 
 --
--- Table structure for table `quarto`
+-- Estrutura da tabela `quarto`
 --
 
-DROP TABLE IF EXISTS `quarto`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `quarto` (
+CREATE TABLE IF NOT EXISTS `quarto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` enum('1','2') NOT NULL,
   `numero` int(11) NOT NULL,
@@ -216,50 +175,64 @@ CREATE TABLE `quarto` (
   `descricao` varchar(180) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `quarto`
+-- Estrutura da tabela `recepcionista`
 --
 
-LOCK TABLES `quarto` WRITE;
-/*!40000 ALTER TABLE `quarto` DISABLE KEYS */;
-/*!40000 ALTER TABLE `quarto` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `recepcionista`
---
-
-DROP TABLE IF EXISTS `recepcionista`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `recepcionista` (
+CREATE TABLE IF NOT EXISTS `recepcionista` (
   `id_pessoa` int(11) NOT NULL,
   `senha` varchar(20) NOT NULL,
   `salario` decimal(7,2) NOT NULL,
-  PRIMARY KEY (`id_pessoa`),
-  CONSTRAINT `recepcionista_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  PRIMARY KEY (`id_pessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `recepcionista`
+-- Extraindo dados da tabela `recepcionista`
 --
 
-LOCK TABLES `recepcionista` WRITE;
-/*!40000 ALTER TABLE `recepcionista` DISABLE KEYS */;
-INSERT INTO `recepcionista` VALUES (2,'123',1000.00);
-/*!40000 ALTER TABLE `recepcionista` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+INSERT INTO `recepcionista` (`id_pessoa`, `senha`, `salario`) VALUES
+(2, '123', '1000.00');
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Limitadores para a tabela `cliente`
+--
+ALTER TABLE `cliente`
+  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `consumo`
+--
+ALTER TABLE `consumo`
+  ADD CONSTRAINT `consumo_ibfk_1` FOREIGN KEY (`id_hospedagem`) REFERENCES `hospedagem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consumo_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `hospedagem`
+--
+ALTER TABLE `hospedagem`
+  ADD CONSTRAINT `hospedagem_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_pessoa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hospedagem_ibfk_2` FOREIGN KEY (`id_quarto`) REFERENCES `quarto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `proprietario`
+--
+ALTER TABLE `proprietario`
+  ADD CONSTRAINT `proprietario_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `recepcionista`
+--
+ALTER TABLE `recepcionista`
+  ADD CONSTRAINT `recepcionista_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2018-07-01 22:23:51
