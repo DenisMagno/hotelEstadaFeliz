@@ -5,10 +5,10 @@ import java.util.Date;
 
 public class Hospedagem {
     private Long id;
-    private Date checkin;
-    private Date checkout;
-    private Date dataHoraInicio;
-    private Date dataHoraFim;
+    private String checkin;
+    private String checkout;
+    private String dataHoraInicio;
+    private String dataHoraFim;
     private Float preco;
     private String status;
     
@@ -16,9 +16,7 @@ public class Hospedagem {
     private Long idQuarto;
     private Cliente cliente;
     private Quarto quarto;
-    
-    private SimpleDateFormat data = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-    
+      
     public Hospedagem(){
         this.cliente = new Cliente();
         this.quarto = new Quarto();
@@ -32,37 +30,38 @@ public class Hospedagem {
         this.id = id;
     }
 
-    public String getCheckin() {
-        return this.data.format(checkin);
-    }
-
-    public void setCheckin(Date checkin) {
+    public void setCheckin(String checkin) {
         this.checkin = checkin;
     }
 
-    public String getCheckout() {
-        return this.data.format(checkout);
+    
+    public String getCheckin() {
+        return checkin;
     }
 
-    public void setCheckout(Date checkout) {
+    public String getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 
     public String getDataHoraInicio() {
-        return this.data.format(dataHoraInicio);
+        return dataHoraInicio;
     }
 
-    public void setDataHoraInicio(Date dataHoraInicio) {
+    public void setDataHoraInicio(String dataHoraInicio) {
         this.dataHoraInicio = dataHoraInicio;
     }
 
     public String getDataHoraFim() {
-        return this.data.format(dataHoraFim);
+        return dataHoraFim;
     }
 
-    public void setDataHoraFim(Date dataHoraFim) {
+    public void setDataHoraFim(String dataHoraFim) {
         this.dataHoraFim = dataHoraFim;
-    }
+    }    
 
     public Float getPreco() {
         return preco;

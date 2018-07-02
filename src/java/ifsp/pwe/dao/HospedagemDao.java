@@ -6,8 +6,6 @@ import ifsp.pwe.beans.Quarto;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +23,12 @@ public class HospedagemDao extends ConnectionFactory{
             }
             
             Hospedagem hospedagem = new Hospedagem();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             
             hospedagem.setId(rs.getLong("id"));
-            hospedagem.setCheckin(format.parse(rs.getString("checkin")));
-            hospedagem.setCheckout(format.parse(rs.getString("checkout")));
-            hospedagem.setDataHoraInicio(format.parse(rs.getString("dataHoraInicio")));
-            hospedagem.setDataHoraFim(format.parse(rs.getString("dataHoraFim")));
+            hospedagem.setCheckin(rs.getString("checkin"));
+            hospedagem.setCheckout(rs.getString("checkout"));
+            hospedagem.setDataHoraInicio(rs.getString("dataHoraInicio"));
+            hospedagem.setDataHoraFim(rs.getString("dataHoraFim"));
             hospedagem.setPreco(rs.getFloat("preco"));
             hospedagem.setStatus(rs.getString("status"));
             
@@ -48,8 +45,6 @@ public class HospedagemDao extends ConnectionFactory{
             return hospedagem;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
-        }catch(ParseException ex){
-            throw new RuntimeException(ex);
         }
     }
     
@@ -61,16 +56,15 @@ public class HospedagemDao extends ConnectionFactory{
             ResultSet rs = stmt.executeQuery();
             
             List<Hospedagem> hospedagens = new ArrayList<Hospedagem>();
-            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             
             while(rs.next()){
                 Hospedagem hospedagem = new Hospedagem();
                 
                 hospedagem.setId(rs.getLong("id"));
-                hospedagem.setCheckin(format.parse(rs.getString("checkin")));
-                hospedagem.setCheckout(format.parse(rs.getString("checkout")));
-                hospedagem.setDataHoraInicio(format.parse(rs.getString("dataHorarioInicio")));
-                hospedagem.setDataHoraFim(format.parse(rs.getString("dataHorarioFim")));
+                hospedagem.setCheckin(rs.getString("checkin"));
+                hospedagem.setCheckout(rs.getString("checkout"));
+                hospedagem.setDataHoraInicio(rs.getString("dataHorarioInicio"));
+                hospedagem.setDataHoraFim(rs.getString("dataHorarioFim"));
                 hospedagem.setPreco(rs.getFloat("preco"));
                 hospedagem.setStatus(rs.getString("status"));
                 
@@ -90,21 +84,19 @@ public class HospedagemDao extends ConnectionFactory{
             return hospedagens;
         } catch (SQLException ex) {
             throw new RuntimeException(ex);
-        }catch(ParseException ex){
-            throw new RuntimeException(ex);
         }
     }
     
     public Hospedagem criar(Hospedagem hospedagem){
         try {           
-            String sql = "INSERT INTO hospedagem (checkIn, checkOut, dataHoraInicio, dataHoraFim, preco, status, id_cliente, id_quarto) values(?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO hospedagem (checkIn, checkOut, dataHorarioInicio, dataHorarioFim, preco, status, id_cliente, id_quarto) values(?, ?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, hospedagem.getCheckin());
             stmt.setString(2, hospedagem.getCheckout());
             stmt.setString(3, hospedagem.getDataHoraInicio());
             stmt.setString(4, hospedagem.getDataHoraFim());
             stmt.setFloat(5, hospedagem.getPreco());
-            stmt.setString(6, hospedagem.getStatus());
+            stmt.setString(6, "1");
             stmt.setLong(7, hospedagem.getCliente().getId());
             stmt.setLong(8, hospedagem.getQuarto().getId());
 

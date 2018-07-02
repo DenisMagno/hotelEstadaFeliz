@@ -5,17 +5,20 @@ import ifsp.pwe.beans.Hospedagem;
 import ifsp.pwe.beans.Quarto;
 import ifsp.pwe.dao.HospedagemDao;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class HospedagemMB {
     private Long id;
-    private Date checkin;
-    private Date checkout;
-    private Date dataHoraInicio;
-    private Date dataHoraFim;
+    private String checkin;
+    private String checkout;
+    private String dataHoraInicio;
+    private String dataHoraFim;
     private Float preco;
     private String status;
     
@@ -25,9 +28,11 @@ public class HospedagemMB {
     private Quarto quarto;
     
     private Hospedagem hospedagem;
-    
+
     public HospedagemMB(){
         this.hospedagem = new Hospedagem();
+        this.cliente = new Cliente();
+        this.quarto = new Quarto();
     }
     
     public void criar() throws IOException{
@@ -37,14 +42,19 @@ public class HospedagemMB {
         this.hospedagem.setDataHoraFim(this.dataHoraFim);
         this.hospedagem.setPreco(this.preco);
         this.hospedagem.setStatus(this.status);
+        this.cliente.setId(this.idCliente);
+        this.quarto.setId(this.idQuarto);
         this.hospedagem.setCliente(this.cliente);
         this.hospedagem.setQuarto(this.quarto);
         
         Hospedagem hospedagem = new HospedagemDao().criar(this.hospedagem);
-        if(hospedagem == null){
-            System.out.println("Não cadastrou");
+        
+        if(hospedagem != null){
+            System.out.println("Criou hospedagem");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("hospedagem.xhtml");
         }else{
-            System.out.println("Não cadastrou");
+            System.out.println("Não criou hospedagem");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("hospedagem.xhtml");
         }
     }
     
@@ -61,36 +71,44 @@ public class HospedagemMB {
         this.id = id;
     }
 
-    public Date getCheckin() {
+    public String getCheckin() {
         return checkin;
     }
 
-    public void setCheckin(Date checkin) {
+    public void setCheckin(String checkin) {
         this.checkin = checkin;
     }
 
-    public Date getCheckout() {
+    public String getCheckout() {
         return checkout;
     }
 
-    public void setCheckout(Date checkout) {
+    public void setCheckout(String checkout) {
         this.checkout = checkout;
     }
 
-    public Date getDataHoraInicio() {
+    public String getDataHoraInicio() {
         return dataHoraInicio;
     }
 
-    public void setDataHoraInicio(Date dataHoraInicio) {
+    public void setDataHoraInicio(String dataHoraInicio) {
         this.dataHoraInicio = dataHoraInicio;
     }
 
-    public Date getDataHoraFim() {
+    public String getDataHoraFim() {
         return dataHoraFim;
     }
 
-    public void setDataHoraFim(Date dataHoraFim) {
+    public void setDataHoraFim(String dataHoraFim) {
         this.dataHoraFim = dataHoraFim;
+    }
+
+    public Hospedagem getHospedagem() {
+        return hospedagem;
+    }
+
+    public void setHospedagem(Hospedagem hospedagem) {
+        this.hospedagem = hospedagem;
     }
 
     public Float getPreco() {

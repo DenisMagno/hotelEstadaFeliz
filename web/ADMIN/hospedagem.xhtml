@@ -31,13 +31,13 @@
                     <h1 class="titulo">Cadastrar Hospedagem</h1>
                     <section class="caixa-form-admin">
                         <h:form>
-                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.cliente}">
+                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.idCliente}">
                                 <f:selectItem itemLabel="Selecione um Cliente"/>
-                                <f:selectItems value="#{clienteMB.buscar()}" var="clie" itemLabel="#{clie.nome}" itemValue="#{clie}" />
+                                <f:selectItems value="#{clienteMB.buscar()}" var="clie" itemLabel="#{clie.nome}" itemValue="#{clie.id}" />
                             </p:selectOneMenu>
-                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.quarto}">
+                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.idQuarto}">
                                 <f:selectItem itemLabel="Selecione um Quarto"/>
-                                <f:selectItems value="#{quartoMB.buscar()}" var="quart" itemLabel="#{quart.numero} - Trazer Hotel (Denis tem q fazer)" itemValue="#{quart}" />
+                                <f:selectItems value="#{quartoMB.buscar()}" var="quart" itemLabel="#{quart.numero}" itemValue="#{quart.id}" />
                             </p:selectOneMenu>
                             <p:inputText class="campo-admin" placeholder="Checkin" id="checkin" value="#{hospedagemMB.checkin}" />
                             <p:inputText class="campo-admin" placeholder="Checkout" id="checkout" value="#{hospedagemMB.checkout}" />
