@@ -5,6 +5,16 @@ public class Recepcionista extends Pessoa implements IFuncionario{
     private String senha;
     private String email;
     
+    public Recepcionista(){}
+    public Recepcionista(Pessoa pessoa){
+        this.id = pessoa.getId();
+        this.cpf = pessoa.getCpf();
+        this.nome = pessoa.getNome();
+        this.telefone = pessoa.telefone;
+        this.email = pessoa.email;
+        this.endereco = pessoa.endereco;
+    }
+    
     @Override
     public void obterConsumo() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

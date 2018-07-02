@@ -27,13 +27,15 @@ public class PessoaMB {
 
         if(result == 1){
             SessionContext sessao = SessionContext.getInstance();
-            sessao.setAttribute("usuario_logado", pessoa);
+            Proprietario proprietario = new Proprietario(pessoa);
+            sessao.setAttribute("usuario_logado", proprietario);
             FacesContext.getCurrentInstance().getExternalContext().redirect("ADMIN/proprietario.xhtml");
         }
         
         if(result == 2){
             SessionContext sessao = SessionContext.getInstance();
-            sessao.setAttribute("usuario_logado", pessoa);
+            Recepcionista recepcionista = new Recepcionista(pessoa);
+            sessao.setAttribute("usuario_logado", recepcionista);
             FacesContext.getCurrentInstance().getExternalContext().redirect("ADMIN/recepcionista.xhtml");
         }
         
@@ -47,6 +49,22 @@ public class PessoaMB {
         sessao.encerrarSessao();
 
         FacesContext.getCurrentInstance().getExternalContext().redirect("../index.xhtml");
+    }
+    
+    public int verificarFuncionario(){
+        SessionContext sessao = SessionContext.getInstance();
+        Object pessoa = sessao.getAttribute("usuario_logado");
+
+        if(pessoa instanceof Proprietario){
+            System.out.println("É um proprietário");
+            return 1;
+        }else if(pessoa instanceof Recepcionista){
+            System.out.println("É um recepcionista");
+            return 2;
+        }else{
+            System.out.println("Não é proprietário nem recepcionista");
+            return 0;
+        }
     }
 
     public String getSenha() {

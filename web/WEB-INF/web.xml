@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<web-app xmlns="http://java.sun.com/xml/ns/javaee"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-         version="3.0">
-
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
     <welcome-file-list>
         <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
-
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
@@ -18,28 +12,46 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
-
     <context-param>
         <param-name>primefaces.THEME</param-name>
         <param-value>bootstrap</param-value>
     </context-param>
-
+    
     <filter>
-       <filter-name>LoginFilter</filter-name>
-       <filter-class>ifsp.pwe.utils.LoginFilter</filter-class>
+        <filter-name>Filter</filter-name>
+        <filter-class>ifsp.pwe.utils.LoginFilter</filter-class>
     </filter>
-
     <filter-mapping>
-        <filter-name>LoginFilter</filter-name>
-        <url-pattern>/ADMIN/proprietario.xhtml</url-pattern>
+        <filter-name>Filter</filter-name>
+        <url-pattern>/ADMIN/cliente.xhtml</url-pattern>
+        <url-pattern>/ADMIN/hospedagem.xhtml</url-pattern>
+        <url-pattern>/ADMIN/produto.xhtml</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>FilterRecepcionista</filter-name>
+        <filter-class>ifsp.pwe.utils.LoginRecepcionistaFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterRecepcionista</filter-name>
         <url-pattern>/ADMIN/recepcionista.xhtml</url-pattern>
-        <url-pattern>/ADMIN/visualizacao-generico.xhtml</url-pattern>
-        <url-pattern>/ADMIN/formulario-generico.xhtml</url-pattern>
+    </filter-mapping>
+    
+    <filter>
+        <filter-name>FilterProprietario</filter-name>
+        <filter-class>ifsp.pwe.utils.LoginProprietarioFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>FilterProprietario</filter-name>
+        <url-pattern>/ADMIN/proprietario.xhtml</url-pattern>
+        <url-pattern>/ADMIN/funcionario.xhtml</url-pattern>
+        <url-pattern>/ADMIN/hotel.xhtml</url-pattern>
+        <url-pattern>/ADMIN/quarto.xhtml</url-pattern>
     </filter-mapping>
 
     <session-config>
         <session-timeout>
             30
         </session-timeout>
-    </session-config> 
+    </session-config>
 </web-app>

@@ -5,7 +5,8 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:n="http://java.sun.com/jsf/facelets">
+      xmlns:n="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Hotel Estada Feliz - Administração - Área Restrita</title>
         <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
@@ -15,7 +16,14 @@
 
         <div class="wraper">
 
-            <n:include src="navProprietario.xhtml"></n:include>
+            <c:choose>
+                <c:when test="#{pessoaMB.verificarFuncionario() == 1}">
+                    <n:include src="navProprietario.xhtml"></n:include>
+                </c:when>
+                <c:when test="#{pessoaMB.verificarFuncionario() == 2}">
+                    <n:include src="navRecepcionista.xhtml"></n:include>
+                </c:when>
+            </c:choose>
             
             <div class="secao">
                 <div class="container">
