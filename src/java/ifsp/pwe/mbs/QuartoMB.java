@@ -1,5 +1,6 @@
 package ifsp.pwe.mbs;
 
+import ifsp.pwe.beans.Hotel;
 import ifsp.pwe.beans.Quarto;
 import ifsp.pwe.dao.QuartoDao;
 import java.util.List;
@@ -12,6 +13,7 @@ public class QuartoMB {
     private String numero;
     private Float preco;
     private String descricao;
+    private Hotel hotel;
     private Quarto quarto;
     
     public QuartoMB(){
@@ -79,5 +81,14 @@ public class QuartoMB {
     public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
     }
+
+    public Hotel getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+    
     
 }
