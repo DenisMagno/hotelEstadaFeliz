@@ -40,8 +40,41 @@
 
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Área Restrita</h1>
-                    <div class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                    <h1 class="titulo">Conteúdo Genérico</h1>
+                    <section class="visualizacao-form-admin">
+                        <h:form id="carForm">
+                            <p:fieldset id="availableCarsField" legend="Conteúdo">
+                                <p:dataTable id="availableCars" var="car" value="">
+                                    <p:column headerText="Id">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+
+                                    <p:column headerText="Campo 1">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+
+                                    <p:column headerText="Campo 2">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+
+                                    <p:column headerText="Campo 3">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                        <p:draggable for="Editar" revert="true" helper="clone"/>
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                    </p:column>
+                                </p:dataTable>
+                                
+                            </p:fieldset>
+                        </h:form>
+                    </section>
                 </div>
             </div>
 

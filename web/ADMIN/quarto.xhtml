@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hotel Estada Feliz - Administração - Área Restrita</title>
+        <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
+    </h:head>
+
+    <h:body>
+
+        <div class="wraper">
+
+            <header>
+                <div class="container">
+                    <div class="logo-header">
+                        <img src="../IMG/logo_1.png"></img>
+                    </div>
+                    <h:form class="menu-admin">  
+                        <p:growl id="messages"/>
+                        <p:menubar>
+                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
+
+
+                            <f:facet name="options">
+                                <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
+                            </f:facet>
+                        </p:menubar>
+                    </h:form>
+                </div>
+            </header>
+            
+             <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Cadastrar Quarto</h1>
+                    <section class="caixa-form-admin">
+                        <h:form>        
+                            <p:inputText class="campo-admin" placeholder='Tipo' id ="tipo" value="#{quartoMB.tipo}"/>
+                            <p:inputText class="campo-admin" placeholder='Numero' id ="numero" value="#{quartoMB.numero}"/>
+                            <p:inputText class="campo-admin" placeholder='Preço' id ="telefone" value="#{quartoMB.telefone}"/>
+                            <p:inputText class="campo-admin" placeholder='Descrição' id ="descricao" value="#{quartoMB.descricao}"/>
+                            <p:commandButton value="Cadastrar" id="nonAjax" actionListener="#{quartoMB.criar()}" ajax="false" />
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+
+            <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Listar Quartos</h1>
+                    <section class="visualizacao-form-admin">
+                        <h:form id="carForm">
+                            <p:fieldset id="availableCarsField" legend="Conteúdo">
+                                <p:dataTable id="availableCars" var="car" value="">
+                                    <p:column headerText="Tipo">
+                                        <h:outputText value="#{quartoMB.tipo} />
+                                    </p:column>
+
+                                    <p:column headerText="Numero">
+                                        <h:outputText value="#{quartoMB.numero}" />
+                                    </p:column>
+
+                                    <p:column headerText="Telefone">
+                                        <h:outputText value="#{quartoMB.telefone}" />
+                                    </p:column>
+
+                                    <p:column headerText="Descricao">
+                                        <h:outputText value="#{quartoMB.descricao}" />
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                        <p:draggable for="Editar" revert="true" helper="clone"/>
+                                    </p:column>
+                                    
+                                    <p:column style="width:20px">
+                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                    </p:column>
+                                </p:dataTable>
+                                
+                            </p:fieldset>
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="geral-footer">
+                    </div>
+                </div>
+                <div class="barra-footer">
+                    <div class="container">
+                        <span class="esquerda">Hotel Estada Feliz</span>
+                        <span class="direita">2018 - Todos os direitos reservados</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </h:body>
+</html>

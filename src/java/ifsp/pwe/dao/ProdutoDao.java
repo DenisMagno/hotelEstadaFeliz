@@ -49,14 +49,14 @@ public class ProdutoDao extends ConnectionFactory {
     }
     public Produto criar(Produto produto){
         try {
-            String sql = "INSERT INTO hotel (nome,preco,descricao,status) values(?,?,?,?)";
+            String sql = "INSERT INTO produto (nome,preco,descricao,status) values(?,?,?,?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
             stmt.setString(1, produto.getNome());
             stmt.setFloat(2, produto.getPreco());
             stmt.setString(3, produto.getDescricao());
             stmt.setString(4, produto.getStatus());
             
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;

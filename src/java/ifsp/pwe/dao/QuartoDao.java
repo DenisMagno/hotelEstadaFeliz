@@ -45,7 +45,7 @@ public class QuartoDao extends ConnectionFactory{
             stmt.setFloat(3, quarto.getPreco());
             stmt.setString(4, quarto.getDescricao());
 
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;

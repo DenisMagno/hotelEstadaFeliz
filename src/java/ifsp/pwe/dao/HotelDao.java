@@ -41,7 +41,7 @@ public class HotelDao extends ConnectionFactory{
             stmt.setString(2, hotel.getEndereco());
             stmt.setString(3, hotel.getCnpj().toString());
             
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;
