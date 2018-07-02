@@ -1,5 +1,6 @@
 package ifsp.pwe.beans;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Hospedagem {
@@ -16,6 +17,8 @@ public class Hospedagem {
     private Cliente cliente;
     private Quarto quarto;
     
+    private SimpleDateFormat data = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    
     public Hospedagem(){
         this.cliente = new Cliente();
         this.quarto = new Quarto();
@@ -29,32 +32,32 @@ public class Hospedagem {
         this.id = id;
     }
 
-    public Date getCheckin() {
-        return checkin;
+    public String getCheckin() {
+        return this.data.format(checkin);
     }
 
     public void setCheckin(Date checkin) {
         this.checkin = checkin;
     }
 
-    public Date getCheckout() {
-        return checkout;
+    public String getCheckout() {
+        return this.data.format(checkout);
     }
 
     public void setCheckout(Date checkout) {
         this.checkout = checkout;
     }
 
-    public Date getDataHoraInicio() {
-        return dataHoraInicio;
+    public String getDataHoraInicio() {
+        return this.data.format(dataHoraInicio);
     }
 
     public void setDataHoraInicio(Date dataHoraInicio) {
         this.dataHoraInicio = dataHoraInicio;
     }
 
-    public Date getDataHoraFim() {
-        return dataHoraFim;
+    public String getDataHoraFim() {
+        return this.data.format(dataHoraFim);
     }
 
     public void setDataHoraFim(Date dataHoraFim) {
@@ -99,6 +102,10 @@ public class Hospedagem {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+    
+    public void setIdQuarto(Long idQuarto) {
+        this.idQuarto = idQuarto;
     }
 
     public Quarto getQuarto() {

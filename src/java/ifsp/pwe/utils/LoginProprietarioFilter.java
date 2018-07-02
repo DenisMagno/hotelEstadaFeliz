@@ -24,7 +24,6 @@ public class LoginProprietarioFilter implements Filter{
         if(pessoa == null){
             ((HttpServletResponse) response).sendRedirect("../index.xhtml");
         }else if(!(pessoa instanceof Proprietario)){
-            System.out.println("Não é um proprietário");
             ((HttpServletResponse) response).sendRedirect("recepcionista.xhtml");
         }
         

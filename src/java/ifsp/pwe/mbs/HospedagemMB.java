@@ -1,8 +1,11 @@
 package ifsp.pwe.mbs;
 
 import ifsp.pwe.beans.Cliente;
+import ifsp.pwe.beans.Hospedagem;
 import ifsp.pwe.beans.Quarto;
+import ifsp.pwe.dao.HospedagemDao;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
@@ -19,6 +22,11 @@ public class HospedagemMB {
     private Long idQuarto;
     private Cliente cliente;
     private Quarto quarto;
+    
+    public List<Hospedagem> buscar(){
+        List<Hospedagem> clientes = new HospedagemDao().obter();
+        return clientes;
+    }
 
     public Long getId() {
         return id;
@@ -107,6 +115,4 @@ public class HospedagemMB {
     public void setQuarto(Quarto quarto) {
         this.quarto = quarto;
     }
-    
-    
 }

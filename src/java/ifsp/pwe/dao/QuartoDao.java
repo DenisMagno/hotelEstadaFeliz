@@ -10,7 +10,7 @@ public class QuartoDao extends ConnectionFactory{
         try {
             String sql = "SELECT * FROM quarto WHERE id = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, sql);
+            stmt.setLong(1, id);
 
             ResultSet rs = stmt.executeQuery();
             

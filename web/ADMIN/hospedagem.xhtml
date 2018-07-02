@@ -32,43 +32,51 @@
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
-                                <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Check-In">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
+                                <n:repeat var="hospedagem" value="#{hospedagemMB.buscar()}">
+                                    <p:dataTable id="availableCars" var="car" value="">
+                                        <p:column headerText="Cliente">
+                                            <h:outputText value="#{hospedagem.cliente.nome}" />
+                                        </p:column>
+                                        
+                                        <p:column headerText="Quarto">
+                                            <h:outputText value="#{hospedagem.quarto.numero}" />
+                                        </p:column>
+                                        
+                                        <p:column headerText="Check-In">
+                                            <h:outputText value="#{hospedagem.checkin}" />
+                                        </p:column>
 
-                                    <p:column headerText="Check-Out">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
+                                        <p:column headerText="Check-Out">
+                                            <h:outputText value="#{hospedagem.checkout}" />
+                                        </p:column>
 
-                                    <p:column headerText="Data Hora Inicio">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
+                                        <p:column headerText="Data Hora Inicio">
+                                            <h:outputText value="#{hospedagem.dataHoraInicio}" />
+                                        </p:column>
 
-                                    <p:column headerText="Data Hora Fim">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Preco">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
-                                    
-                                    <p:column headerText="Status">
-                                        <h:outputText value="Teste" />
-                                    </p:column>
-                                    
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
-                                        <p:draggable for="Editar" revert="true" helper="clone"/>
-                                    </p:column>
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
-                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
-                                    </p:column>
-                                </p:dataTable>
-                                
+                                        <p:column headerText="Data Hora Fim">
+                                            <h:outputText value="#{hospedagem.dataHoraFim}" />
+                                        </p:column>
+
+                                        <p:column headerText="Preco">
+                                            <h:outputText value="#{hospedagem.preco}" />
+                                        </p:column>
+
+                                        <p:column headerText="Status">
+                                            <h:outputText value="#{hospedagem.status}" />
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                            <p:draggable for="Editar" revert="true" helper="clone"/>
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                            <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </n:repeat>
                             </p:fieldset>
                         </h:form>
                     </section>

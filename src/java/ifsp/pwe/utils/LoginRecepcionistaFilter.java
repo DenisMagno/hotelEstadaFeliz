@@ -25,7 +25,6 @@ public class LoginRecepcionistaFilter implements Filter{
             ((HttpServletResponse) response).sendRedirect("../index.xhtml");
         }else if(!(pessoa instanceof Recepcionista)){
             ((HttpServletResponse) response).sendRedirect("proprietario.xhtml");
-            System.out.println("Não é um recepcionista");
         }
 
         chain.doFilter(request, response);
