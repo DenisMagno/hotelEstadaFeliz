@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 public class QuartoDao extends ConnectionFactory{
     public Quarto obter(Long id){
-        
         try {
             String sql = "SELECT * FROM quarto WHERE id = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
@@ -46,7 +45,7 @@ public class QuartoDao extends ConnectionFactory{
             stmt.setFloat(3, quarto.getPreco());
             stmt.setString(4, quarto.getDescricao());
 
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ifsp.pwe.dao;
 
 import ifsp.pwe.beans.Hotel;
@@ -10,16 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-/**
- *
- * @author felipe
- */
 public class HotelDao extends ConnectionFactory{
     public Hotel obter(Long id){
         try {
             String sql = "Select * FROM hotel WHERE id = ?";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, sql);
+            stmt.setLong(1, id);
             
             ResultSet rs = stmt.executeQuery();
             
@@ -44,13 +35,13 @@ public class HotelDao extends ConnectionFactory{
     
     public Hotel criar(Hotel hotel){
         try {
-            String sql = "INSERT INTO hotel values(?,?,?)";
+            String sql = "INSERT INTO hotel (nome, endereco, cnpj) values(?,?,?)";
             PreparedStatement stmt = this.connection.prepareStatement(sql);
-            stmt.setString(1, sql);
-            stmt.setString(2, sql);
-            stmt.setString(3, sql);
+            stmt.setString(1, hotel.getNome());
+            stmt.setString(2, hotel.getEndereco());
+            stmt.setString(3, hotel.getCnpj().toString());
             
-            boolean rs = stmt.execute(sql);
+            boolean rs = stmt.execute();
             
             if(!rs){
                 return null;

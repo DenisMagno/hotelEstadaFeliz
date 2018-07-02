@@ -22,16 +22,15 @@
                     <h:form class="menu-admin">  
                         <p:growl id="messages"/>
                         <p:menubar>
-                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
+                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="http://www.primefaces.org"/>
                             <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
-
+                            <p:menuitem class="menu-admin-item" value="Produtos" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Funcionários" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Hotéis" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Quartos" url="http://www.primefaces.org"/>
 
                             <f:facet name="options">
-                                <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
+                                <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />
                             </f:facet>
                         </p:menubar>
                     </h:form>
@@ -40,8 +39,16 @@
 
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Área Restrita</h1>
-                    <div class="texto">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                    <h1 class="titulo">Formulário Genérico</h1>
+                    <section class="caixa-form-admin">
+                        <h:form>        
+                            <p:inputText class="campo-admin" placeholder='Nome' id ="nome" value="#{produtoMB.nome}" />
+                            <p:inputText class="campo-admin" placeholder='Preco' id="preco" value="#{produtoMB.preco}" />
+                            <p:inputText class="campo-admin" placeholder='Descricao' id="descricao" value="#{produtoMB.descricao}" />
+                            <p:inputText class="campo-admin" placeholder='Status' id="status" value="#{produtoMB.status}" />
+                            <p:commandButton value="Cadastrar" id="nonAjax" actionListener="#{produtoMB.criar()}" ajax="false" />
+                        </h:form>
+                    </section>
                 </div>
             </div>
 
