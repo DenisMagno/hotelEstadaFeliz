@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:n="http://java.sun.com/jsf/facelets">
+      
     <h:head>
         <title>Hotel Estada Feliz - Administração - Área Restrita</title>
         <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
@@ -14,52 +16,38 @@
 
         <div class="wraper">
 
-            <header>
-                <div class="container">
-                    <div class="logo-header">
-                        <img src="../IMG/logo_1.png"></img>
-                    </div>
-                    <h:form class="menu-admin">  
-                        <p:growl id="messages"/>
-                        <p:menubar>
-                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
-
-
-                            <f:facet name="options">
-                                <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
-                            </f:facet>
-                        </p:menubar>
-                    </h:form>
-                </div>
-            </header>
-
+            <n:include src="navProprietario.xhtml"></n:include>
             <div class="secao">
                 <div class="container">
-                    <h1 class="titulo">Conteúdo Genérico</h1>
+                    <h1 class="titulo">Listar Hospedagens</h1>
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
                                 <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Id">
+                                    <p:column headerText="Check-In">
                                         <h:outputText value="Teste" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 1">
+                                    <p:column headerText="Check-Out">
                                         <h:outputText value="Teste" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 2">
+                                    <p:column headerText="Data Hora Inicio">
                                         <h:outputText value="Teste" />
                                     </p:column>
 
-                                    <p:column headerText="Campo 3">
+                                    <p:column headerText="Data Hora Fim">
                                         <h:outputText value="Teste" />
                                     </p:column>
+                                    
+                                    <p:column headerText="Preco">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+                                    
+                                    <p:column headerText="Status">
+                                        <h:outputText value="Teste" />
+                                    </p:column>
+                                    
                                     
                                     <p:column style="width:20px">
                                         <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />

@@ -1,0 +1,21 @@
+<header xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+                <div class="container">
+                    <div class="logo-header">
+                        <img src="../IMG/logo_1.png"></img>
+                    </div>
+                    <h:form class="menu-admin">  
+                        <p:growl id="messages"/>
+                        <p:menubar>
+                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
+                            <p:menuitem class="menu-admin-item" value="Produtos" url="http://www.primefaces.org"/>
+
+                            <f:facet name="options">
+                                <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
+                            </f:facet>
+                        </p:menubar>
+                    </h:form>
+                </div>
+            </header>

@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:n="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Hotel Estada Feliz - Administração - Área Restrita</title>
         <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
@@ -14,29 +15,7 @@
 
         <div class="wraper">
 
-            <header>
-                <div class="container">
-                    <div class="logo-header">
-                        <img src="../IMG/logo_1.png"></img>
-                    </div>
-                    <h:form class="menu-admin">  
-                        <p:growl id="messages"/>
-                        <p:menubar>
-                            <p:menuitem class="menu-admin-item" value="Hospedagens" url="hospedagem.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Clientes" url="http://www.primefaces.org"/>
-                            <p:menuitem class="menu-admin-item" value="Produtos" url="produto.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Funcionários" url="funcionario.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Hotéis" url="hotel.xhtml"/>
-                            <p:menuitem class="menu-admin-item" value="Quartos" url="quarto.xhtml"/>
-
-
-                            <f:facet name="options">
-                                <p:commandButton value="Logout" action="#{pessoaMB.sair()}" icon="ui-icon-extlink" />
-                            </f:facet>
-                        </p:menubar>
-                    </h:form>
-                </div>
-            </header>
+            <n:include src="navProprietario.xhtml"></n:include>
              <div class="secao">
                 <div class="container">
                     <h1 class="titulo">Cadastrar Funcionário</h1>
@@ -61,23 +40,23 @@
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
                                 <p:dataTable id="availableCars" var="car" value="">
                                     <p:column headerText="CPF">
-                                        <h:outputText value="#{funcionarioMB.cpf}" />
+                                        <h:outputText value="" />
                                     </p:column>
 
                                     <p:column headerText="Nome">
-                                        <h:outputText value="#{funcionarioMB.nome}" />
+                                        <h:outputText value="" />
                                     </p:column>
 
                                     <p:column headerText="Telefone">
-                                        <h:outputText value="#{funcionarioMB.telefone}" />
+                                        <h:outputText value="" />
                                     </p:column>
                                     
                                     <p:column headerText="E-mail">
-                                        <h:outputText value="#{funcionarioMB.email}" />
+                                        <h:outputText value="" />
                                     </p:column>
                                     
                                     <p:column headerText="Endereço">
-                                        <h:outputText value="#{funcionarioMB.endereco}" />
+                                        <h:outputText value="" />
                                     </p:column>
                                     
                                     <p:column style="width:20px">
