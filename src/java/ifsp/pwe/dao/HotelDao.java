@@ -4,6 +4,8 @@ import ifsp.pwe.beans.Hotel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HotelDao extends ConnectionFactory{
     public Hotel obter(Long id){
@@ -28,6 +30,35 @@ public class HotelDao extends ConnectionFactory{
             this.connection.close();
             
             return hotel;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public List<Hotel> obter(){
+        try {
+            String sql = "Select * FROM hotel";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            
+            ResultSet rs = stmt.executeQuery();
+            
+            List<Hotel> hoteis = new ArrayList<Hotel>();
+            while(rs.next()){
+                Hotel hotel = new Hotel();
+            
+                hotel.setId(rs.getLong("id"));
+                hotel.setNome(rs.getString("nome"));
+                hotel.setEndereco(rs.getString("endereco"));
+                hotel.setCnpj(rs.getLong("cnpj"));
+                
+                hoteis.add(hotel);
+            }
+            
+            rs.close();
+            stmt.close();
+            this.connection.close();
+            
+            return hoteis;
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
