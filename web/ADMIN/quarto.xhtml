@@ -46,34 +46,35 @@
                     <section class="visualizacao-form-admin">
                         <h:form id="carForm">
                             <p:fieldset id="availableCarsField" legend="Conteúdo">
-                                <p:dataTable id="availableCars" var="car" value="">
-                                    <p:column headerText="Tipo">
-                                        <h:outputText value="#{quartoMB.tipo}" />
-                                    </p:column>
+                                <n:repeat var="quarto" value="#{quartoMB.buscar()}">
+                                    <p:dataTable id="availableCars" var="car" value="">
+                                        <p:column headerText="Tipo">
+                                            <h:outputText value="#{quarto.tipo}" />
+                                        </p:column>
 
-                                    <p:column headerText= "Numero">
-                                        <h:outputText value="#{quartoMB.numero}" />
-                                    </p:column>
+                                        <p:column headerText= "Numero">
+                                            <h:outputText value="#{quarto.numero}" />
+                                        </p:column>
 
-                                    <p:column headerText="Preço">
-                                        <h:outputText value="#{quartoMB.preco}" />
-                                    </p:column>
+                                        <p:column headerText="Preço">
+                                            <h:outputText value="#{quarto.preco}" />
+                                        </p:column>
 
-                                    <p:column headerText="Descricao">
-                                        <h:outputText value="#{quartoMB.descricao}" />
-                                    </p:column>
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
-                                        <p:draggable for="Editar" revert="true" helper="clone"/>
-                                    </p:column>
-                                    
-                                    <p:column style="width:20px">
-                                        <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
-                                        <p:draggable for="Excluir" revert="true" helper="clone"/>
-                                    </p:column>
-                                </p:dataTable>
-                                
+                                        <p:column headerText="Descricao">
+                                            <h:outputText value="#{quarto.descricao}" />
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                            <p:draggable for="Editar" revert="true" helper="clone"/>
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                            <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </n:repeat>
                             </p:fieldset>
                         </h:form>
                     </section>
