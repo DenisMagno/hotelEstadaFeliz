@@ -11,6 +11,7 @@ public abstract class ConnectionFactory {
     private String username = "root";
     private String password = "senha";
 
+
     protected Connection connection;
 
     public ConnectionFactory(){

@@ -29,7 +29,7 @@ public class QuartoMB {
         new QuartoDao().criar(this.quarto);
     }
     
-    public List<Quarto> obter(){
+    public List<Quarto> buscar(){
         List<Quarto> quartos = new QuartoDao().obter();
         return quartos;
     }

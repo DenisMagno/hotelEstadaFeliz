@@ -134,7 +134,8 @@ header{
 }
 
 .campo-admin{
-    width: 100%;
+    background: #fff;
+    width: 100% !important;
     box-sizing: border-box;
     margin-bottom: 20px;
 }

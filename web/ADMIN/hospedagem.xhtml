@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:n="http://java.sun.com/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-      
+
     <h:head>
         <title>Hotel Estada Feliz - Administração - Área Restrita</title>
         <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
@@ -25,14 +25,20 @@
                     <n:include src="navRecepcionista.xhtml"></n:include>
                 </c:when>
             </c:choose>
-            
+
             <div class="secao">
                 <div class="container">
                     <h1 class="titulo">Cadastrar Hospedagem</h1>
                     <section class="caixa-form-admin">
                         <h:form>
-                            <p:inputText class="campo-admin" placeholder="Cliente" id="cliente" value="#{hospedagemMB.idCliente}" />
-                            <p:inputText class="campo-admin" placeholder="Quarto" id="quarto" value="#{hospedagemMB.idQuarto}" />
+                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.cliente}">
+                                <f:selectItem itemLabel="Selecione um Cliente"/>
+                                <f:selectItems value="#{clienteMB.buscar()}" var="clie" itemLabel="#{clie.nome}" itemValue="#{clie}" />
+                            </p:selectOneMenu>
+                            <p:selectOneMenu class="campo-admin" value="#{hospedagemMB.quarto}">
+                                <f:selectItem itemLabel="Selecione um Quarto"/>
+                                <f:selectItems value="#{quartoMB.buscar()}" var="quart" itemLabel="#{quart.numero} - Trazer Hotel (Denis tem q fazer)" itemValue="#{quart}" />
+                            </p:selectOneMenu>
                             <p:inputText class="campo-admin" placeholder="Checkin" id="checkin" value="#{hospedagemMB.checkin}" />
                             <p:inputText class="campo-admin" placeholder="Checkout" id="checkout" value="#{hospedagemMB.checkout}" />
                             <p:inputText class="campo-admin" placeholder="Data inicio" id="datainicio" value="#{hospedagemMB.dataHoraInicio}" />
@@ -43,7 +49,7 @@
                     </section>
                 </div>
             </div>
-            
+
             <div class="secao">
                 <div class="container">
                     <h1 class="titulo">Listar Hospedagens</h1>
@@ -55,11 +61,11 @@
                                         <p:column headerText="Cliente">
                                             <h:outputText value="#{hospedagem.cliente.nome}" />
                                         </p:column>
-                                        
+
                                         <p:column headerText="Quarto">
                                             <h:outputText value="#{hospedagem.quarto.numero}" />
                                         </p:column>
-                                        
+
                                         <p:column headerText="Check-In">
                                             <h:outputText value="#{hospedagem.checkin}" />
                                         </p:column>
