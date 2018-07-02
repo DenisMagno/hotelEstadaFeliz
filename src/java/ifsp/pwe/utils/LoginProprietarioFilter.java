@@ -1,6 +1,6 @@
 package ifsp.pwe.utils;
 
-import ifsp.pwe.beans.Recepcionista;
+import ifsp.pwe.beans.Proprietario;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class LoginRecepcionistaFilter implements Filter{
+public class LoginProprietarioFilter implements Filter{
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException { }
@@ -23,11 +23,11 @@ public class LoginRecepcionistaFilter implements Filter{
 
         if(pessoa == null){
             ((HttpServletResponse) response).sendRedirect("../index.xhtml");
-        }else if(!(pessoa instanceof Recepcionista)){
-            ((HttpServletResponse) response).sendRedirect("proprietario.xhtml");
-            System.out.println("Não é um recepcionista");
+        }else if(!(pessoa instanceof Proprietario)){
+            System.out.println("Não é um proprietário");
+            ((HttpServletResponse) response).sendRedirect("recepcionista.xhtml");
         }
-
+        
         chain.doFilter(request, response);
     }
 
