@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 public class PessoaDao extends ConnectionFactory {
     public Pessoa criar(Pessoa pessoa){
@@ -25,13 +26,14 @@ public class PessoaDao extends ConnectionFactory {
             ResultSet result = stmt.getGeneratedKeys();
             if(result.next()){
 		pessoa.setId(result.getLong(1));
-            }	            
+            }
             
             stmt.close();
+            result.close();
             this.connection.close();
             return pessoa;
             
-        } catch (Exception e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -95,4 +97,6 @@ public class PessoaDao extends ConnectionFactory {
             throw new RuntimeException(ex);
         }   
     }
+    
+    
 }
