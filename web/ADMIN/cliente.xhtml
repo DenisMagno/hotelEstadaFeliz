@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:n="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Hotel Estada Feliz - Administração - Área Restrita</title>
+        <link rel="StyleSheet" type="text/css" href="../CSS/style.css" media="screen" ></link> 
+    </h:head>
+
+    <h:body>
+
+        <div class="wraper">
+
+             <!-- TODO - tem que fazer um if para distinguir qual funcionario é (recepcionista ou proprietário) -->
+            <n:include src="navProprietario.xhtml"></n:include>
+            <n:include src="navRecepcionista.xhtml"></n:include>
+            
+            <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Cadastrar Cliente</h1>
+                    <section class="caixa-form-admin">
+                        <h:form>
+                            <p:inputText class="campo-admin" placeholder="Nome" id="nome" value="#{clienteMB.nome}" />
+                            <p:inputText class="campo-admin" placeholder="E-mail" id="email" value="#{clienteMB.email}" />
+                            <p:inputText class="campo-admin" placeholder="CPF" id="cpf" value="#{clienteMB.cpf}" />
+                            <p:inputText class="campo-admin" placeholder="Endereço" id="endereco" value="#{clienteMB.endereco}" />
+                            <p:inputText class="campo-admin" placeholder="Telefone" id="telefone" value="#{clienteMB.telefone}" />
+                            <p:commandButton value="Cadastrar" action="#{clienteMB.criar()}" />
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+            
+            <div class="secao">
+                <div class="container">
+                    <h1 class="titulo">Listar Clientes</h1>
+                    <section class="visualizacao-form-admin">
+                        <h:form id="carForm">
+                            <p:fieldset id="availableCarsField" legend="Conteúdo">
+                                <n:repeat var="cliente" value="#{clienteMB.buscar()}">
+                                    <p:dataTable id="availableCars" var="car" value="">
+                                        <p:column headerText="Nome">
+                                            <h:outputText value="#{cliente.nome}" />
+                                        </p:column>
+
+                                        <p:column headerText="E-mail">
+                                            <h:outputText value="#{cliente.email}" />
+                                        </p:column>
+
+                                        <p:column headerText="Endereço">
+                                            <h:outputText value="#{cliente.endereco}" />
+                                        </p:column>
+
+                                        <p:column headerText="CPF">
+                                            <h:outputText value="#{cliente.cpf}" />
+                                        </p:column>
+
+                                        <p:column headerText="Telefone">
+                                            <h:outputText value="#{cliente.telefone}" />
+                                        </p:column>
+
+                                        <p:column headerText="Criação">
+                                            <h:outputText value="#{cliente.dataCriacao}" />
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Editar" styleClass="ui-icon ui-icon-pencil" />
+                                            <p:draggable for="Editar" revert="true" helper="clone"/>
+                                        </p:column>
+
+                                        <p:column style="width:20px">
+                                            <h:outputText id="Excluir" styleClass="ui-icon ui-icon-close" />
+                                            <p:draggable for="Excluir" revert="true" helper="clone"/>
+                                        </p:column>
+                                    </p:dataTable>
+                                </n:repeat>
+                            </p:fieldset>
+                        </h:form>
+                    </section>
+                </div>
+            </div>
+
+            <footer>
+                <div class="container">
+                    <div class="geral-footer">
+                    </div>
+                </div>
+                <div class="barra-footer">
+                    <div class="container">
+                        <span class="esquerda">Hotel Estada Feliz</span>
+                        <span class="direita">2018 - Todos os direitos reservados</span>
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+    </h:body>
+</html>
