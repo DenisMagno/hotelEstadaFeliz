@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jul-2018 às 22:19
+-- Generation Time: 02-Jul-2018 às 23:13
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -172,8 +172,10 @@ CREATE TABLE IF NOT EXISTS `quarto` (
   `numero` int(11) NOT NULL,
   `preco` int(11) NOT NULL,
   `descricao` varchar(180) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `id_hotel` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_hotel` (`id_hotel`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -224,6 +226,12 @@ ALTER TABLE `hospedagem`
 --
 ALTER TABLE `proprietario`
   ADD CONSTRAINT `proprietario_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `quarto`
+--
+ALTER TABLE `quarto`
+  ADD CONSTRAINT `quarto_ibfk_1` FOREIGN KEY (`id_hotel`) REFERENCES `hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `recepcionista`
