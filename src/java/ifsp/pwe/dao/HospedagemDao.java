@@ -94,4 +94,31 @@ public class HospedagemDao extends ConnectionFactory{
             throw new RuntimeException(ex);
         }
     }
+    
+    public Hospedagem criar(Hospedagem hospedagem){
+        try {           
+            String sql = "INSERT INTO hospedagem (checkIn, checkOut, dataHoraInicio, dataHoraFim, preco, status, id_cliente, id_quarto) values(?, ?, ?, ?, ?, ?, ?, ?)";
+            PreparedStatement stmt = this.connection.prepareStatement(sql);
+            stmt.setString(1, hospedagem.getCheckin());
+            stmt.setString(2, hospedagem.getCheckout());
+            stmt.setString(3, hospedagem.getDataHoraInicio());
+            stmt.setString(4, hospedagem.getDataHoraFim());
+            stmt.setFloat(5, hospedagem.getPreco());
+            stmt.setString(6, hospedagem.getStatus());
+            stmt.setLong(7, hospedagem.getCliente().getId());
+            stmt.setLong(8, hospedagem.getQuarto().getId());
+
+            int rs = stmt.executeUpdate();
+            if(rs == 0){
+                return null;
+            }
+
+            stmt.close();
+            this.connection.close();
+
+            return hospedagem;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

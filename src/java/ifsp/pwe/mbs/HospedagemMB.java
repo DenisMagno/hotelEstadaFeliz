@@ -4,6 +4,7 @@ import ifsp.pwe.beans.Cliente;
 import ifsp.pwe.beans.Hospedagem;
 import ifsp.pwe.beans.Quarto;
 import ifsp.pwe.dao.HospedagemDao;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -23,8 +24,28 @@ public class HospedagemMB {
     private Cliente cliente;
     private Quarto quarto;
     
-    public void criar(){
+    private Hospedagem hospedagem;
+    
+    public HospedagemMB(){
+        this.hospedagem = new Hospedagem();
+    }
+    
+    public void criar() throws IOException{
+        this.hospedagem.setCheckin(this.checkin);
+        this.hospedagem.setCheckout(this.checkout);
+        this.hospedagem.setDataHoraInicio(this.dataHoraInicio);
+        this.hospedagem.setDataHoraFim(this.dataHoraFim);
+        this.hospedagem.setPreco(this.preco);
+        this.hospedagem.setStatus(this.status);
+        this.hospedagem.setCliente(this.cliente);
+        this.hospedagem.setQuarto(this.quarto);
         
+        Hospedagem hospedagem = new HospedagemDao().criar(this.hospedagem);
+        if(hospedagem == null){
+            System.out.println("Não cadastrou");
+        }else{
+            System.out.println("Não cadastrou");
+        }
     }
     
     public List<Hospedagem> buscar(){
