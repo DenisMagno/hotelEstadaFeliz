@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 02-Jul-2018 às 21:37
+-- Generation Time: 02-Jul-2018 às 22:04
 -- Versão do servidor: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -21,7 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `hotel_estada_feliz`
 --
-
 DROP DATABASE IF EXISTS `hotel_estada_feliz`;
 CREATE DATABASE `hotel_estada_feliz` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `hotel_estada_feliz`;
@@ -33,16 +32,16 @@ USE `hotel_estada_feliz`;
 --
 
 CREATE TABLE IF NOT EXISTS `cliente` (
-  `id_pessoa` int(11) NOT NULL,
+  `idPessoa` int(11) NOT NULL,
   `dataCriacao` varchar(60) NOT NULL,
-  PRIMARY KEY (`id_pessoa`)
+  PRIMARY KEY (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `cliente`
 --
 
-INSERT INTO `cliente` (`id_pessoa`, `dataCriacao`) VALUES
+INSERT INTO `cliente` (`idPessoa`, `dataCriacao`) VALUES
 (5, '2018/07/02 13:06:55');
 
 -- --------------------------------------------------------
@@ -52,12 +51,19 @@ INSERT INTO `cliente` (`id_pessoa`, `dataCriacao`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `consumo` (
-  `id_hospedagem` int(11) NOT NULL,
-  `id_produto` int(11) NOT NULL,
+  `idHospedagem` int(11) NOT NULL,
+  `idProduto` int(11) NOT NULL,
   `quantidade` int(11) NOT NULL,
-  PRIMARY KEY (`id_hospedagem`,`id_produto`),
-  KEY `id_produto` (`id_produto`)
+  KEY `id_produto` (`idProduto`),
+  KEY `idHospedagem` (`idHospedagem`,`idProduto`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `consumo`
+--
+
+INSERT INTO `consumo` (`idHospedagem`, `idProduto`, `quantidade`) VALUES
+(1, 1, 500);
 
 -- --------------------------------------------------------
 
@@ -67,18 +73,25 @@ CREATE TABLE IF NOT EXISTS `consumo` (
 
 CREATE TABLE IF NOT EXISTS `hospedagem` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `checkIn` datetime NOT NULL,
-  `checkOut` datetime NOT NULL,
-  `dataHorarioInicio` datetime NOT NULL,
-  `dataHorarioFim` datetime NOT NULL,
+  `checkIn` varchar(40) NOT NULL,
+  `checkOut` varchar(40) NOT NULL,
+  `dataHorarioInicio` varchar(40) NOT NULL,
+  `dataHorarioFim` varchar(40) NOT NULL,
   `preco` float NOT NULL,
   `status` enum('1','2','3') NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `id_quarto` int(11) NOT NULL,
+  `idCliente` int(11) NOT NULL,
+  `idQuarto` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `id_cliente` (`id_cliente`,`id_quarto`),
-  KEY `id_quarto` (`id_quarto`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  KEY `id_cliente` (`idCliente`,`idQuarto`),
+  KEY `id_quarto` (`idQuarto`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `hospedagem`
+--
+
+INSERT INTO `hospedagem` (`id`, `checkIn`, `checkOut`, `dataHorarioInicio`, `dataHorarioFim`, `preco`, `status`, `idCliente`, `idQuarto`) VALUES
+(1, '2', '2', '1', '1', 300, '2', 5, 2);
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,14 @@ CREATE TABLE IF NOT EXISTS `produto` (
   `descricao` varchar(180) NOT NULL,
   `status` enum('1','2','3') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `nome`, `preco`, `descricao`, `status`) VALUES
+(1, 'cha', 1, '', '1');
 
 -- --------------------------------------------------------
 
@@ -148,17 +168,17 @@ CREATE TABLE IF NOT EXISTS `produto` (
 --
 
 CREATE TABLE IF NOT EXISTS `proprietario` (
-  `id_pessoa` int(11) NOT NULL,
+  `idPessoa` int(11) NOT NULL,
   `senha` varchar(20) NOT NULL,
   `salario` decimal(7,2) NOT NULL,
-  PRIMARY KEY (`id_pessoa`)
+  PRIMARY KEY (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `proprietario`
 --
 
-INSERT INTO `proprietario` (`id_pessoa`, `senha`, `salario`) VALUES
+INSERT INTO `proprietario` (`idPessoa`, `senha`, `salario`) VALUES
 (1, '123', '1000.00');
 
 -- --------------------------------------------------------
@@ -173,8 +193,17 @@ CREATE TABLE IF NOT EXISTS `quarto` (
   `numero` int(11) NOT NULL,
   `preco` int(11) NOT NULL,
   `descricao` varchar(180) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  `idHotel` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idHotel` (`idHotel`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `quarto`
+--
+
+INSERT INTO `quarto` (`id`, `tipo`, `numero`, `preco`, `descricao`, `idHotel`) VALUES
+(2, '2', 3, 40, 'opa', 1);
 
 -- --------------------------------------------------------
 
@@ -183,17 +212,17 @@ CREATE TABLE IF NOT EXISTS `quarto` (
 --
 
 CREATE TABLE IF NOT EXISTS `recepcionista` (
-  `id_pessoa` int(11) NOT NULL,
+  `idPessoa` int(11) NOT NULL,
   `senha` varchar(20) NOT NULL,
   `salario` decimal(7,2) NOT NULL,
-  PRIMARY KEY (`id_pessoa`)
+  PRIMARY KEY (`idPessoa`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `recepcionista`
 --
 
-INSERT INTO `recepcionista` (`id_pessoa`, `senha`, `salario`) VALUES
+INSERT INTO `recepcionista` (`idPessoa`, `senha`, `salario`) VALUES
 (2, '123', '1000.00');
 
 --
@@ -204,33 +233,39 @@ INSERT INTO `recepcionista` (`id_pessoa`, `senha`, `salario`) VALUES
 -- Limitadores para a tabela `cliente`
 --
 ALTER TABLE `cliente`
-  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cliente_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `consumo`
 --
 ALTER TABLE `consumo`
-  ADD CONSTRAINT `consumo_ibfk_1` FOREIGN KEY (`id_hospedagem`) REFERENCES `hospedagem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `consumo_ibfk_2` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `consumo_ibfk_1` FOREIGN KEY (`idHospedagem`) REFERENCES `hospedagem` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `consumo_ibfk_2` FOREIGN KEY (`idProduto`) REFERENCES `produto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `hospedagem`
 --
 ALTER TABLE `hospedagem`
-  ADD CONSTRAINT `hospedagem_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_pessoa`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hospedagem_ibfk_2` FOREIGN KEY (`id_quarto`) REFERENCES `quarto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `hospedagem_ibfk_1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idPessoa`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `hospedagem_ibfk_2` FOREIGN KEY (`idQuarto`) REFERENCES `quarto` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `proprietario`
 --
 ALTER TABLE `proprietario`
-  ADD CONSTRAINT `proprietario_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `proprietario_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limitadores para a tabela `quarto`
+--
+ALTER TABLE `quarto`
+  ADD CONSTRAINT `quarto_ibfk_1` FOREIGN KEY (`idHotel`) REFERENCES `hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limitadores para a tabela `recepcionista`
 --
 ALTER TABLE `recepcionista`
-  ADD CONSTRAINT `recepcionista_ibfk_1` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `recepcionista_ibfk_1` FOREIGN KEY (`idPessoa`) REFERENCES `pessoa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
